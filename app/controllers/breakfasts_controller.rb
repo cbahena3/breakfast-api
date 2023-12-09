@@ -17,4 +17,14 @@ class BreakfastsController < ApplicationController
     @breakfast = Breakfast.find_by(id: params[:id])
     render :show
   end
+
+  def update
+    @breakfast = Breakfast.find_by(id: params[:id])
+    @breakfast.update(
+      name: params[:name] || @breakfast.name,
+      description: params[:description] || @breakfast.description,
+      price: params[:price] || @breakfast.price
+    )
+    render :show
+  end
 end
