@@ -12,4 +12,9 @@ class BreakfastsController < ApplicationController
       )
     render :show
   end
+
+  def show
+    @breakfast = Breakfast.find_by(id: params[:id])
+    render :show
+  end
 end

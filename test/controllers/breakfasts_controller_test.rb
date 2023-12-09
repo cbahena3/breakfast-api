@@ -15,4 +15,12 @@ class BreakfastsControllerTest < ActionDispatch::IntegrationTest
       assert_response 200
     end
   end
+
+  test "show" do
+    get "/breakfasts/#{Breakfast.first.id}.json"
+    assert_response 200
+
+    data = JSON.parse(response.body)
+    assert_equal ["id", "name", "description", "price"], data.keys
+  end
 end
