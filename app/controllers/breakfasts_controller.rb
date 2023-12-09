@@ -27,4 +27,10 @@ class BreakfastsController < ApplicationController
     )
     render :show
   end
+
+  def destroy
+    @breakfast = Breakfast.find_by(id: params[:id])
+    @breakfast.destroy
+    render json:{message: "Succesfully deleted."}
+  end
 end
