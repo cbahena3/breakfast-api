@@ -8,4 +8,11 @@ class BreakfastsControllerTest < ActionDispatch::IntegrationTest
     data = JSON.parse(response.body)
     assert_equal Breakfast.count, data.length
   end
+
+  test "create" do
+    assert_difference "Breakfast.count", 1 do
+      post "/breakfasts.json", params: { name: "lake", width: 800, height: 600 }
+      assert_response 200
+    end
+  end
 end
